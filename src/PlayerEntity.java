@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 
 /**
  * @author Eldon
@@ -6,14 +8,16 @@
  *
  */
 public class PlayerEntity {
-	public static int NONE = 0;
-	public static int ROL_TOP = 1;
-	public static int ROL_MID = 2;
-	public static int ROL_CARRY = 3;
-	public static int ROL_SUPPORT = 4;
+	public static final int NONE = 0;
+	public static final int ROL_TOP = 1;
+	public static final int ROL_MID = 2;
+	public static final int ROL_CARRY = 3;
+	public static final int ROL_SUPPORT = 4;
+	public static final int ROL_JUNGLA = 5;
 	private int champID;
 	private int playerID;
 	private int rol;
+	private ArrayList<Integer> items = new ArrayList<Integer>();
 	public PlayerEntity(){
 		this(NONE,NONE,NONE);
 	}
@@ -45,6 +49,15 @@ public class PlayerEntity {
 	}
 	public void setRol(int rol) {
 		this.rol = rol;
+	}
+	public void addItem(int itemid){
+		getItems().add(itemid);
+	}
+	public ArrayList<Integer> getItems() {
+		return items;
+	}
+	public void setItems(ArrayList<Integer> items) {
+		this.items = items;
 	}
 	
 	
