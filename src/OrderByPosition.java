@@ -16,115 +16,76 @@ public class OrderByPosition {
 	public static final int RED_TEAM = 1;
 	public static final int BOTTOM = 3;
 	
-	public static int raro = 0;
-	private ArrayList<Integer>[] lineasErroneas;
-	private String[][] chamIds;
-	private ArrayList<Integer>[][] champsInpositions; 
-	private MatchDetail match;
+//	public static int raro = 0;
+//	private ArrayList<Integer>[] lineasErroneas;
+//	private String[][] chamIds;
+//	private ArrayList<Integer>[][] champsInpositions; 
+//	private MatchDetail match;
 	
-	public  OrderByPosition(MatchDetail nmatch) {
-		match = nmatch;
-		chamIds = new String[2][5];
-		champsInpositions = new ArrayList[2][4];
-		champsInpositions[0][TOP] = new ArrayList<Integer>();
-		champsInpositions[0][MIDDLE] = new ArrayList<Integer>();
-		champsInpositions[0][JUNGLE] = new ArrayList<Integer>();
-		champsInpositions[0][BOTTOM] = new ArrayList<Integer>();
-		champsInpositions[1][TOP] = new ArrayList<Integer>();
-		champsInpositions[1][MIDDLE] = new ArrayList<Integer>();
-		champsInpositions[1][JUNGLE] = new ArrayList<Integer>();
-		champsInpositions[1][BOTTOM] = new ArrayList<Integer>();
-		lineasErroneas = new ArrayList[2];
-		lineasErroneas[BLUE_TEAM] = new ArrayList<Integer>();
-		lineasErroneas[RED_TEAM] = new ArrayList<Integer>();
-		
+	public static LolTeam ordenPositions(MatchDetail match, int teamColor) {
 		int firstBottom = -1;
+		int secondBottom = -1;
+		int teamIndex = 0;
+		PlayerEntity fBottom = null; 
+		PlayerEntity sBottom = null;
+		LolTeam team = new LolTeam();
+		ArrayList<PlayerEntity> topLane = new ArrayList<PlayerEntity>();
+		ArrayList<PlayerEntity> midLane = new ArrayList<PlayerEntity>();
+		ArrayList<PlayerEntity> bottomLane = new ArrayList<PlayerEntity>();
+		ArrayList<PlayerEntity> jungle = new ArrayList<PlayerEntity>();
+				
+		if (teamColor == RED_TEAM) teamIndex = 5;
 		
-		for (int i = 0; i < 5; i++) {
-			if (match.getParticipants().get(i).getTimeline().getLane().equals("TOP")) {
-				chamIds[0][TOP] = "" + match.getParticipants().get(i).getChampionId();
-				champsInpositions[0][TOP].add(match.getParticipants().get(i).getChampionId());
+		
+		for (int i = 0 + teamIndex; i < 5 + teamIndex; i++) {
+			if (match.getParticipants().get(i).getTimeline().getLane().equals("TOP")) {	
+				topLane.add(new PlayerEntity(match.getParticipants().get(i).getParticipantId(), match.getParticipants().get(i).getChampionId(), PlayerEntity.ROL_TOP));
 			}
 			else if (match.getParticipants().get(i).getTimeline().getLane().equals("MIDDLE")  || 
 					match.getParticipants().get(i).getTimeline().getLane().equals("MID")) {
-				chamIds[0][MIDDLE] = "" + match.getParticipants().get(i).getChampionId();
-				champsInpositions[0][MIDDLE].add(match.getParticipants().get(i).getChampionId());
+				midLane.add(new PlayerEntity(match.getParticipants().get(i).getParticipantId(), match.getParticipants().get(i).getChampionId(), PlayerEntity.ROL_MID));
 			}
 			else if (match.getParticipants().get(i).getTimeline().getLane().equals("JUNGLE")) {
-				chamIds[0][JUNGLE] = "" + match.getParticipants().get(i).getChampionId();
-				champsInpositions[0][JUNGLE].add(match.getParticipants().get(i).getChampionId());
+				jungle.add(new PlayerEntity(match.getParticipants().get(i).getParticipantId(), match.getParticipants().get(i).getChampionId(), PlayerEntity.ROL_JUNGLA));
 			}
 			else if (match.getParticipants().get(i).getTimeline().getLane().equals("BOTTOM")  || 
 					match.getParticipants().get(i).getTimeline().getLane().equals("BOT")) {
-				champsInpositions[0][BOTTOM].add(match.getParticipants().get(i).getChampionId());
+				
+				bottomLane.add(new PlayerEntity(match.getParticipants().get(i).getParticipantId(), match.getParticipants().get(i).getChampionId(), PlayerEntity.NONE));
+				
 				if (firstBottom == -1) {
 					firstBottom = i;
+					fBottom = bottomLane.get(bottomLane.size() - 1);
 				}
-				else {
-					
-					//champsInpositions[0][BOTTOM].add(match.getParticipants().get(firstBottom).getChampionId());
-					if (match.getParticipants().get(i).getStats().getGoldEarned() > match.getParticipants().get(firstBottom).getStats().getGoldEarned()) {
-						chamIds[0][CARRY] = "" + match.getParticipants().get(i).getChampionId();
-						chamIds[0][SUPP] = "" + match.getParticipants().get(firstBottom).getChampionId();
-					}
-					else {
-						chamIds[0][SUPP] = "" + match.getParticipants().get(i).getChampionId();
-						chamIds[0][CARRY] = "" + match.getParticipants().get(firstBottom).getChampionId();
-					}
+				else if (secondBottom == -1) {
+					secondBottom = i;			
+					sBottom = bottomLane.get(bottomLane.size() - 1);
 				}
 			}
 			
 		}
-		setErrorLines(BLUE_TEAM);
-		firstBottom = -1;
-		for (int i = 5; i < 10; i++) {
-			if (match.getParticipants().get(i).getTimeline().getLane().equals("TOP")) {
-				chamIds[1][TOP] = "" + match.getParticipants().get(i).getChampionId();
-				champsInpositions[1][TOP].add(match.getParticipants().get(i).getChampionId());
+		if (bottomLane.size() == 2) {
+			if (match.getParticipants().get(secondBottom).getStats().getGoldEarned() > match.getParticipants().get(firstBottom).getStats().getGoldEarned()) {
+				sBottom.setRol(PlayerEntity.ROL_CARRY);
+				fBottom.setRol(PlayerEntity.ROL_SUPPORT);
 			}
-			else if (match.getParticipants().get(i).getTimeline().getLane().equals("MIDDLE")  || 
-					match.getParticipants().get(i).getTimeline().getLane().equals("MID")) {
-				chamIds[1][MIDDLE] = "" + match.getParticipants().get(i).getChampionId();
-				champsInpositions[1][MIDDLE].add(match.getParticipants().get(i).getChampionId());
-			}
-			else if (match.getParticipants().get(i).getTimeline().getLane().equals("JUNGLE")) {
-				chamIds[1][JUNGLE] = "" + match.getParticipants().get(i).getChampionId();
-				champsInpositions[1][JUNGLE].add(match.getParticipants().get(i).getChampionId());
-			}
-			else if (match.getParticipants().get(i).getTimeline().getLane().equals("BOTTOM")  || 
-					match.getParticipants().get(i).getTimeline().getLane().equals("BOT")) {
-				champsInpositions[1][BOTTOM].add(match.getParticipants().get(i).getChampionId());
-				if (firstBottom == -1) {
-					firstBottom = i;
-				}
-				else {
-					
-					//champsInpositions[1][BOTTOM].add(match.getParticipants().get(firstBottom).getChampionId());
-					if (match.getParticipants().get(i).getStats().getGoldEarned() > match.getParticipants().get(firstBottom).getStats().getGoldEarned()) {
-						chamIds[1][CARRY] = "" + match.getParticipants().get(i).getChampionId();
-						chamIds[1][SUPP] = "" + match.getParticipants().get(firstBottom).getChampionId();
-					}
-					else {
-						chamIds[1][SUPP] = "" + match.getParticipants().get(i).getChampionId();
-						chamIds[1][CARRY] = "" + match.getParticipants().get(firstBottom).getChampionId();
-					}
-				}
-			}
-			
+			else {
+				fBottom.setRol(PlayerEntity.ROL_CARRY);
+				sBottom.setRol(PlayerEntity.ROL_SUPPORT);
+			}	
 		}
-		setErrorLines(RED_TEAM);
+		
+		team.setBottomLane(bottomLane);
+		team.setJungle(jungle);
+		team.setMidLane(midLane);
+		team.setTopLane(topLane);
+		
+		if (jungle.size() != 1 || topLane.size() != 1 || midLane.size() != 1 || bottomLane.size() != 2)
+			team.setWeirdCase(true);
+		
+		return team;
 	}
 	
-	public void setErrorLines(int team) {
-		if (champsInpositions[team][TOP].size() != 1)
-			lineasErroneas[team].add(TOP);
-		if (champsInpositions[team][MIDDLE].size() != 1) 
-			lineasErroneas[team].add(MIDDLE);
-		if (champsInpositions[team][JUNGLE].size() != 1) 
-			lineasErroneas[team].add(JUNGLE);
-		if (champsInpositions[team][BOTTOM].size() != 2)
-			lineasErroneas[team].add(BOTTOM);
-	}
 	
 	public static ArrayList<String> getMatchesId(String filename) throws FileNotFoundException {
 		Scanner sc = new Scanner (new FileReader(filename));
@@ -136,43 +97,9 @@ public class OrderByPosition {
 		sc.close();
 		return ids;
 	}
-
-	public boolean isCorrect(int team) {
-		if (lineasErroneas[team].size() == 0)
-			return true;
-		return false;
-	}
-
-	public String[][] getChamIds() {
-		return chamIds;
-	}
-
-	public void setChamIds(String[][] chamIds) {
-		this.chamIds = chamIds;
-	}
-
-	public ArrayList<Integer>[][] getChampsInpositions() {
-		return champsInpositions;
-	}
-
-	public void setChampsInpositions(ArrayList<Integer>[][] champsInpositions) {
-		this.champsInpositions = champsInpositions;
-	}
 	
-	public boolean reOrderTeam(int team) {
-		if (lineasErroneas[team].contains(BOTTOM))
-			reOrderBottom(team);
-		
-		
-		
-		return false;
-	}
 	
-	public void reOrderBottom(int team) {
-		
-	}
-	
-	private int findCarry(int team) {
+/*	private int findCarry(int team) {
 		int maxdmg = -1;
 		int t = 0;
 		int carry = 0;
@@ -183,5 +110,5 @@ public class OrderByPosition {
 				carry = match.getParticipants().get(i).getChampionId();
 		}
 		return carry;
-	}
+	}*/
 }
