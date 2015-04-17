@@ -31,7 +31,7 @@ public class PlayerEntity {
 		this(champid);
 		setPlayerID(playerid);
 	}
-	public PlayerEntity(int champid, int playerid,int rolid){
+	public PlayerEntity(int playerid, int champid , int rolid){
 		this(champid,playerid);
 		setRol(rolid);
 	}
