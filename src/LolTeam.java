@@ -62,5 +62,8 @@ public class LolTeam implements Serializable{
 	public void setData(TeamData data) {
 		this.data = data;
 	}
+	public String toString(){
+		return ("top: " + getTopLane() + " mid: " + getMidLane() + " Bottom: " + getBottomLane() + " Jungler: " + getJungle() + "\n");
+	}
 	
 }

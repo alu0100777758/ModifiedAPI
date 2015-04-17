@@ -46,7 +46,7 @@ public class OrderByPosition {
 				midLane.add(new PlayerEntity(match.getParticipants().get(i).getParticipantId(), match.getParticipants().get(i).getChampionId(), PlayerEntity.ROL_MID));
 			}
 			else if (match.getParticipants().get(i).getTimeline().getLane().equals("JUNGLE")) {
-				jungle.add(new PlayerEntity(match.getParticipants().get(i).getParticipantId(), match.getParticipants().get(i).getChampionId(), PlayerEntity.ROL_JUNGLA));
+				jungle.add(new PlayerEntity(match.getParticipants().get(i).getParticipantId(), match.getParticipants().get(i).getChampionId(), PlayerEntity.ROL_JUNGLER));
 			}
 			else if (match.getParticipants().get(i).getTimeline().getLane().equals("BOTTOM")  || 
 					match.getParticipants().get(i).getTimeline().getLane().equals("BOT")) {

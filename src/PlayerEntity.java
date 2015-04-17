@@ -1,5 +1,7 @@
 import java.util.ArrayList;
 
+import main.java.riotapi.RiotApiException;
+
 
 /**
  * @author Eldon
@@ -13,7 +15,8 @@ public class PlayerEntity {
 	public static final int ROL_MID = 2;
 	public static final int ROL_CARRY = 3;
 	public static final int ROL_SUPPORT = 4;
-	public static final int ROL_JUNGLA = 5;
+	public static final int ROL_JUNGLER = 5;
+	public static final String [] ROL_NAME = {"NONE","TOP","MID","CARRY","SUPPORT","JUNGLER"};
 	private int champID;
 	private int playerID;
 	private int rol;
@@ -58,6 +61,13 @@ public class PlayerEntity {
 	}
 	public void setItems(ArrayList<Integer> items) {
 		this.items = items;
+	}
+	public String toString(){
+		try {
+			return "" + S_Api.getInstance().getChampionById(getChampID()) + "," + ROL_NAME[getRol()];
+		} catch (RiotApiException e) {
+			return "" + getChampID() + "," + ROL_NAME[getRol()];
+		}
 	}
 	
 	
