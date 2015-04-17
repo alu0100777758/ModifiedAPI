@@ -64,7 +64,7 @@ public class PlayerEntity {
 	}
 	public String toString(){
 		try {
-			return "" + S_Api.getInstance().getChampionById(getChampID()) + "," + ROL_NAME[getRol()];
+			return "" + S_Api.getInstance().getDataChampion(getChampID()).getName() + "," + ROL_NAME[getRol()];
 		} catch (RiotApiException e) {
 			return "" + getChampID() + "," + ROL_NAME[getRol()];
 		}

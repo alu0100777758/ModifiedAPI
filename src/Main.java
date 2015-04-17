@@ -48,6 +48,7 @@ public class Main {
 //			}
 //		}
 		System.out.println(error);
+		S_Api.getInstance().save();
 	}
 	
 	static MatchDetail loadFromFile(String fileidname)throws IOException, RiotApiException, FileNotFoundException,ClassNotFoundException{
