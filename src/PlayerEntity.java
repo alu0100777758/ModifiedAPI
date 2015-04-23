@@ -1,7 +1,5 @@
 import java.util.ArrayList;
 
-import main.java.riotapi.RiotApiException;
-
 
 /**
  * @author Eldon
@@ -11,15 +9,15 @@ import main.java.riotapi.RiotApiException;
  */
 public class PlayerEntity {
 	public static final int NONE = 0;
-	public static final int ROL_TOP = 1;
-	public static final int ROL_MID = 2;
-	public static final int ROL_CARRY = 3;
-	public static final int ROL_SUPPORT = 4;
-	public static final int ROL_JUNGLER = 5;
-	public static final String [] ROL_NAME = {"NONE","TOP","MID","CARRY","SUPPORT","JUNGLER"};
+	public static final int ROLE_TOP = 1;
+	public static final int ROLE_MID = 2;
+	public static final int ROLE_CARRY = 3;
+	public static final int ROLE_SUPPORT = 4;
+	public static final int ROLE_JUNGLER = 5;
+	public static final String [] ROLE_NAME = {"NONE","TOP","MID","CARRY","SUPPORT","JUNGLER"};
 	private int champID;
 	private int playerID;
-	private int rol;
+	private int role;
 	private ArrayList<Long> items = new ArrayList<Long>();
 	public PlayerEntity(){
 		this(NONE,NONE,NONE);
@@ -33,7 +31,7 @@ public class PlayerEntity {
 	}
 	public PlayerEntity(int playerid, int champid , int rolid){
 		this(champid,playerid);
-		setRol(rolid);
+		setRole(rolid);
 	}
 	public int getChampID() {
 		return champID;
@@ -47,11 +45,11 @@ public class PlayerEntity {
 	public void setPlayerID(int playerID) {
 		this.playerID = playerID;
 	}
-	public int getRol() {
-		return rol;
+	public int getRole() {
+		return role;
 	}
-	public void setRol(int rol) {
-		this.rol = rol;
+	public void setRole(int role) {
+		this.role = role;
 	}
 	public void addItem(long itemid){
 		getItems().add(itemid);
@@ -62,13 +60,13 @@ public class PlayerEntity {
 	public void setItems(ArrayList<Long> items) {
 		this.items = items;
 	}
-	/*public String toString(){
-		try {
-			return "" + S_Api.getInstance().getDataChampion(getChampID()).getName() + "," + ROL_NAME[getRol()];
-		} catch (RiotApiException e) {
-			return "" + getChampID() + "," + ROL_NAME[getRol()];
-		}
-	}*/
+	public String toString(){
+			return "" + GetChampNameBy.id(getChampID()) + "," + ROLE_NAME[getRole()];
+//			return "" + getChampID() + "," + ROL_NAME[getRol()];
+	}
+	public String getName(){
+		return "" + GetChampNameBy.id(getChampID());
+	}
 	
 	
 

@@ -41,17 +41,17 @@ public class OrderByPosition {
 		for (int i = 0 + teamIndex; i < 5 + teamIndex; i++) {
 			analyzedPlayer = null;
 			if (match.getParticipants().get(i).getTimeline().getLane().equals("TOP")) {	
-				analyzedPlayer = new PlayerEntity(match.getParticipants().get(i).getParticipantId(), match.getParticipants().get(i).getChampionId(), PlayerEntity.ROL_TOP);
+				analyzedPlayer = new PlayerEntity(match.getParticipants().get(i).getParticipantId(), match.getParticipants().get(i).getChampionId(), PlayerEntity.ROLE_TOP);
 				topLane.add(analyzedPlayer);
 			}
 			else if (match.getParticipants().get(i).getTimeline().getLane().equals("MIDDLE")  || 
 					match.getParticipants().get(i).getTimeline().getLane().equals("MID")) {
-				analyzedPlayer = new PlayerEntity(match.getParticipants().get(i).getParticipantId(), match.getParticipants().get(i).getChampionId(), PlayerEntity.ROL_MID);
+				analyzedPlayer = new PlayerEntity(match.getParticipants().get(i).getParticipantId(), match.getParticipants().get(i).getChampionId(), PlayerEntity.ROLE_MID);
 				midLane.add(analyzedPlayer);
 				
 			}
 			else if (match.getParticipants().get(i).getTimeline().getLane().equals("JUNGLE")) {
-				analyzedPlayer = new PlayerEntity(match.getParticipants().get(i).getParticipantId(), match.getParticipants().get(i).getChampionId(), PlayerEntity.ROL_JUNGLER);
+				analyzedPlayer = new PlayerEntity(match.getParticipants().get(i).getParticipantId(), match.getParticipants().get(i).getChampionId(), PlayerEntity.ROLE_JUNGLER);
 				jungle.add(analyzedPlayer);
 			}
 			else if (match.getParticipants().get(i).getTimeline().getLane().equals("BOTTOM")  || 
@@ -72,12 +72,12 @@ public class OrderByPosition {
 		}
 		if (bottomLane.size() == 2) {
 			if (match.getParticipants().get(secondBottom).getStats().getGoldEarned() > match.getParticipants().get(firstBottom).getStats().getGoldEarned()) {
-				sBottom.setRol(PlayerEntity.ROL_CARRY);
-				fBottom.setRol(PlayerEntity.ROL_SUPPORT);
+				sBottom.setRole(PlayerEntity.ROLE_CARRY);
+				fBottom.setRole(PlayerEntity.ROLE_SUPPORT);
 			}
 			else {
-				fBottom.setRol(PlayerEntity.ROL_CARRY);
-				sBottom.setRol(PlayerEntity.ROL_SUPPORT);
+				fBottom.setRole(PlayerEntity.ROLE_CARRY);
+				sBottom.setRole(PlayerEntity.ROLE_SUPPORT);
 			}	
 		}
 		

@@ -1,8 +1,11 @@
 import java.util.HashMap;
 
-class ReadWithScanner extends HashMap<String, String> {
+class GetChampNameBy extends HashMap<String, String> {
 	private static final long serialVersionUID = -5254258419553019637L;
-	private static ReadWithScanner instance = null;
+	private static GetChampNameBy instance = null;
+	public static String id(int id){
+		return GetChampNameBy.id(Integer.toString(id));
+	}
 	public static String id(String id){
 		if(instance == null)
 			load();
@@ -10,7 +13,7 @@ class ReadWithScanner extends HashMap<String, String> {
 	}
 
 	private static void load() {
-		instance = new ReadWithScanner();
+		instance = new GetChampNameBy();
 		instance.put("266", "Aatrox");
 		instance.put("103", "Ahri");
 		instance.put("84", "Akali");
