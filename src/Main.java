@@ -42,8 +42,8 @@ public class Main {
 		jungleItemsIDs.add((long)3710);
 		
 //		OrderByPosition orderedTeams;
-		ids = OrderByPosition.getMatchesId("res/matchIds/matchid3.csv");
-		for (int i = 0; i < 100; i++) {
+		ids = OrderByPosition.getMatchesId("res/matchIds/matchidALL.csv");
+		for (int i = 0; i < 974; i++) {
 			//System.out.println("iteracion:" + i);
 			match = loadFromFile("res/serializedMatches/" + ids.get(i) + ".sav");
 			LolTeam team = OrderByPosition.ordenPositions(match, OrderByPosition.BLUE_TEAM);
