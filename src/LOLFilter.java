@@ -22,28 +22,28 @@ public class LOLFilter {
 	 */
 	public static PlayerEntity jungleFilter(ArrayList<PlayerEntity> players)
 	{
-		ArrayList<Integer> jungleItemsIDs = new ArrayList<Integer>();
-		jungleItemsIDs.add(1039);
-		jungleItemsIDs.add(3711);
-		jungleItemsIDs.add(3713);
-		jungleItemsIDs.add(3715);
-		jungleItemsIDs.add(3706);
-		jungleItemsIDs.add(3719);
-		jungleItemsIDs.add(3720);
-		jungleItemsIDs.add(3721);
-		jungleItemsIDs.add(3722);
-		jungleItemsIDs.add(3723);
-		jungleItemsIDs.add(3724);
-		jungleItemsIDs.add(3725);
-		jungleItemsIDs.add(3726);
-		jungleItemsIDs.add(3714);
-		jungleItemsIDs.add(3716);
-		jungleItemsIDs.add(3717);
-		jungleItemsIDs.add(3718);
-		jungleItemsIDs.add(3707);
-		jungleItemsIDs.add(3708);
-		jungleItemsIDs.add(3709);
-		jungleItemsIDs.add(3710);
+		ArrayList<Long> jungleItemsIDs = new ArrayList<Long>();
+		jungleItemsIDs.add((long)1039);
+		jungleItemsIDs.add((long) 3711);
+		jungleItemsIDs.add((long)3713);
+		jungleItemsIDs.add((long) 3715);
+		jungleItemsIDs.add((long)3706);
+		jungleItemsIDs.add((long)3719);
+		jungleItemsIDs.add((long)3720);
+		jungleItemsIDs.add((long)3721);
+		jungleItemsIDs.add((long)3722);
+		jungleItemsIDs.add((long)3723);
+		jungleItemsIDs.add((long)3724);
+		jungleItemsIDs.add((long)3725);
+		jungleItemsIDs.add((long)3726);
+		jungleItemsIDs.add((long)3714);
+		jungleItemsIDs.add((long)3716);
+		jungleItemsIDs.add((long)3717);
+		jungleItemsIDs.add((long)3718);
+		jungleItemsIDs.add((long)3707);
+		jungleItemsIDs.add((long)3708);
+		jungleItemsIDs.add((long)3709);
+		jungleItemsIDs.add((long)3710);
 		
 		for(PlayerEntity player : players)
 		{
@@ -73,16 +73,16 @@ public class LOLFilter {
 	 * @return Jugador que se ha identificado como support.
 	 */
 	public static PlayerEntity supportFilter(ArrayList<PlayerEntity> players) {
-		ArrayList<Integer> supportItemsIds = new ArrayList<Integer>();
-		supportItemsIds.add(3301);
-		supportItemsIds.add(3302);
-		supportItemsIds.add(3303);
-		supportItemsIds.add(3069);
-		supportItemsIds.add(3097);
-		supportItemsIds.add(3401);
-		supportItemsIds.add(3096);
-		supportItemsIds.add(3098);
-		supportItemsIds.add(3092);
+		ArrayList<Long> supportItemsIds = new ArrayList<Long>();
+		supportItemsIds.add((long)3301);
+		supportItemsIds.add((long)3302);
+		supportItemsIds.add((long)3303);
+		supportItemsIds.add((long)3069);
+		supportItemsIds.add((long)3097);
+		supportItemsIds.add((long)3401);
+		supportItemsIds.add((long)3096);
+		supportItemsIds.add((long)3098);
+		supportItemsIds.add((long)3092);
 		
 		for(PlayerEntity player : players)
 		{
