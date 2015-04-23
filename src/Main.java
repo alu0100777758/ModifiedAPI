@@ -21,7 +21,7 @@ public class Main {
 //		OrderByPosition orderedTeams;
 		ids = OrderByPosition.getMatchesId("res/matchIds/matchid3.csv");
 		int error = 0;
-		for (int i = 7; i < 100; i++) {
+		for (int i = 0; i < 900; i++) {
 			System.out.println("iteracion:" + i);
 			match = loadFromFile("res/serializedMatches/" + ids.get(i) + ".sav");
 			LolTeam team = OrderByPosition.ordenPositions(match, OrderByPosition.BLUE_TEAM);

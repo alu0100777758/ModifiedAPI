@@ -36,8 +36,7 @@ public class OrderByPosition {
 		ArrayList<PlayerEntity> jungle = new ArrayList<PlayerEntity>();
 				
 		if (teamColor == RED_TEAM) teamIndex = 5;
-		
-		
+	
 		for (int i = 0 + teamIndex; i < 5 + teamIndex; i++) {
 			analyzedPlayer = null;
 			if (match.getParticipants().get(i).getTimeline().getLane().equals("TOP")) {	
