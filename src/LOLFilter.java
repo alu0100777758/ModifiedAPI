@@ -28,6 +28,22 @@ public class LOLFilter {
 		jungleItemsIDs.add(3713);
 		jungleItemsIDs.add(3715);
 		jungleItemsIDs.add(3706);
+		jungleItemsIDs.add(3719);
+		jungleItemsIDs.add(3720);
+		jungleItemsIDs.add(3721);
+		jungleItemsIDs.add(3722);
+		jungleItemsIDs.add(3723);
+		jungleItemsIDs.add(3724);
+		jungleItemsIDs.add(3725);
+		jungleItemsIDs.add(3726);
+		jungleItemsIDs.add(3714);
+		jungleItemsIDs.add(3716);
+		jungleItemsIDs.add(3717);
+		jungleItemsIDs.add(3718);
+		jungleItemsIDs.add(3707);
+		jungleItemsIDs.add(3708);
+		jungleItemsIDs.add(3709);
+		jungleItemsIDs.add(3710);
 		
 		for(PlayerEntity player : players)
 		{
@@ -47,6 +63,7 @@ public class LOLFilter {
      * Id = 3301,
      * Id = 3303, 
      * Id = 3302
+     * y todos los demas D:
 	 */
 	 
 	
@@ -60,6 +77,12 @@ public class LOLFilter {
 		supportItemsIds.add(3301);
 		supportItemsIds.add(3302);
 		supportItemsIds.add(3303);
+		supportItemsIds.add(3069);
+		supportItemsIds.add(3097);
+		supportItemsIds.add(3401);
+		supportItemsIds.add(3096);
+		supportItemsIds.add(3098);
+		supportItemsIds.add(3092);
 		
 		for(PlayerEntity player : players)
 		{
