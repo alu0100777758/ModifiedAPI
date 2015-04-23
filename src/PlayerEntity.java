@@ -20,7 +20,7 @@ public class PlayerEntity {
 	private int champID;
 	private int playerID;
 	private int rol;
-	private ArrayList<Integer> items = new ArrayList<Integer>();
+	private ArrayList<Long> items = new ArrayList<Long>();
 	public PlayerEntity(){
 		this(NONE,NONE,NONE);
 	}
@@ -53,22 +53,22 @@ public class PlayerEntity {
 	public void setRol(int rol) {
 		this.rol = rol;
 	}
-	public void addItem(int itemid){
+	public void addItem(long itemid){
 		getItems().add(itemid);
 	}
-	public ArrayList<Integer> getItems() {
+	public ArrayList<Long> getItems() {
 		return items;
 	}
-	public void setItems(ArrayList<Integer> items) {
+	public void setItems(ArrayList<Long> items) {
 		this.items = items;
 	}
-	public String toString(){
+	/*public String toString(){
 		try {
 			return "" + S_Api.getInstance().getDataChampion(getChampID()).getName() + "," + ROL_NAME[getRol()];
 		} catch (RiotApiException e) {
 			return "" + getChampID() + "," + ROL_NAME[getRol()];
 		}
-	}
+	}*/
 	
 	
 

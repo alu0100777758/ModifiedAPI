@@ -28,6 +28,7 @@ public class OrderByPosition {
 		int teamIndex = 0;
 		PlayerEntity fBottom = null; 
 		PlayerEntity sBottom = null;
+		PlayerEntity analyzedPlayer = null;
 		LolTeam team = new LolTeam();
 		ArrayList<PlayerEntity> topLane = new ArrayList<PlayerEntity>();
 		ArrayList<PlayerEntity> midLane = new ArrayList<PlayerEntity>();
@@ -38,20 +39,25 @@ public class OrderByPosition {
 		
 		
 		for (int i = 0 + teamIndex; i < 5 + teamIndex; i++) {
+			analyzedPlayer = null;
 			if (match.getParticipants().get(i).getTimeline().getLane().equals("TOP")) {	
-				topLane.add(new PlayerEntity(match.getParticipants().get(i).getParticipantId(), match.getParticipants().get(i).getChampionId(), PlayerEntity.ROL_TOP));
+				analyzedPlayer = new PlayerEntity(match.getParticipants().get(i).getParticipantId(), match.getParticipants().get(i).getChampionId(), PlayerEntity.ROL_TOP);
+				topLane.add(analyzedPlayer);
 			}
 			else if (match.getParticipants().get(i).getTimeline().getLane().equals("MIDDLE")  || 
 					match.getParticipants().get(i).getTimeline().getLane().equals("MID")) {
-				midLane.add(new PlayerEntity(match.getParticipants().get(i).getParticipantId(), match.getParticipants().get(i).getChampionId(), PlayerEntity.ROL_MID));
+				analyzedPlayer = new PlayerEntity(match.getParticipants().get(i).getParticipantId(), match.getParticipants().get(i).getChampionId(), PlayerEntity.ROL_MID);
+				midLane.add(analyzedPlayer);
+				
 			}
 			else if (match.getParticipants().get(i).getTimeline().getLane().equals("JUNGLE")) {
-				jungle.add(new PlayerEntity(match.getParticipants().get(i).getParticipantId(), match.getParticipants().get(i).getChampionId(), PlayerEntity.ROL_JUNGLER));
+				analyzedPlayer = new PlayerEntity(match.getParticipants().get(i).getParticipantId(), match.getParticipants().get(i).getChampionId(), PlayerEntity.ROL_JUNGLER);
+				jungle.add(analyzedPlayer);
 			}
 			else if (match.getParticipants().get(i).getTimeline().getLane().equals("BOTTOM")  || 
 					match.getParticipants().get(i).getTimeline().getLane().equals("BOT")) {
-				
-				bottomLane.add(new PlayerEntity(match.getParticipants().get(i).getParticipantId(), match.getParticipants().get(i).getChampionId(), PlayerEntity.NONE));
+				analyzedPlayer = new PlayerEntity(match.getParticipants().get(i).getParticipantId(), match.getParticipants().get(i).getChampionId(), PlayerEntity.NONE);
+				bottomLane.add(analyzedPlayer);
 				
 				if (firstBottom == -1) {
 					firstBottom = i;
@@ -62,7 +68,7 @@ public class OrderByPosition {
 					sBottom = bottomLane.get(bottomLane.size() - 1);
 				}
 			}
-			
+			assignItems(match, i, analyzedPlayer);
 		}
 		if (bottomLane.size() == 2) {
 			if (match.getParticipants().get(secondBottom).getStats().getGoldEarned() > match.getParticipants().get(firstBottom).getStats().getGoldEarned()) {
@@ -98,7 +104,15 @@ public class OrderByPosition {
 		return ids;
 	}
 	
-	
+	private static void assignItems(MatchDetail match, int index, PlayerEntity player) {
+		player.addItem(match.getParticipants().get(index).getStats().getItem0());
+		player.addItem(match.getParticipants().get(index).getStats().getItem1());
+		player.addItem(match.getParticipants().get(index).getStats().getItem2());
+		player.addItem(match.getParticipants().get(index).getStats().getItem3());
+		player.addItem(match.getParticipants().get(index).getStats().getItem4());
+		player.addItem(match.getParticipants().get(index).getStats().getItem5());
+		player.addItem(match.getParticipants().get(index).getStats().getItem6());
+	}
 /*	private int findCarry(int team) {
 		int maxdmg = -1;
 		int t = 0;
