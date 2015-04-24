@@ -18,7 +18,7 @@ public class Main {
 		MatchDetail match = null;
 		ArrayList<String> ids = new ArrayList<String>();
 		ArrayList<LolTeam> teams = new ArrayList<LolTeam>();
-		
+		ArrayList<LolTeam> badTeams = new ArrayList<LolTeam>();
 		
 //		OrderByPosition orderedTeams;
 		ids = OrderByPosition.getMatchesId("res/matchIds/matchidALL.csv");
@@ -28,14 +28,20 @@ public class Main {
 			LolTeam team = OrderByPosition.ordenPositions(match, OrderByPosition.BLUE_TEAM);
 			if (!team.isWeirdCase())
 				teams.add(team);
+			else 
+				badTeams.add(team);
 			team = OrderByPosition.ordenPositions(match, OrderByPosition.RED_TEAM);
 			if (!team.isWeirdCase())
 				teams.add(team);
+			else
+				badTeams.add(team);
 		}
 
-		toCSV csvConverter = new toCSV();
+		//toCSV csvConverter = new toCSV();
 		
-		csvConverter.teamToCsv(teams);
+		//csvConverter.teamToCsv(teams);
+		LOLFilter.filter(badTeams);
+		
 	}
 	
 	static MatchDetail loadFromFile(String fileidname)throws IOException, RiotApiException, FileNotFoundException,ClassNotFoundException{

@@ -86,13 +86,18 @@ public class OrderByPosition {
 		team.setMidLane(midLane);
 		team.setTopLane(topLane);
 		
-		if (jungle.size() != 1 || topLane.size() != 1 || midLane.size() != 1 || bottomLane.size() != 2)
-			team.setWeirdCase(true);
-		
+		checkWeird(team);
+	
 		return team;
 	}
 	
-	
+	public static void checkWeird(LolTeam team) {
+		if (team.getJungle().size() != 1 || team.getTopLane().size() != 1 || team.getMidLane().size() != 1 || team.getBottomLane().size() != 2)
+			team.setWeirdCase(true);
+		for (PlayerEntity p : team.getBottomLane())
+			if (p.getRole() == PlayerEntity.NONE)
+				team.setWeirdCase(true);
+	}
 	public static ArrayList<String> getMatchesId(String filename) throws FileNotFoundException {
 		Scanner sc = new Scanner (new FileReader(filename));
 		ArrayList<String> ids = new ArrayList<String>();

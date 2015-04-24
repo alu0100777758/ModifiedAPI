@@ -26,19 +26,19 @@ public class LolTeam implements Serializable{
 	private PlayerEntity[] LaneToArray(ArrayList<PlayerEntity> line) {
 		return line.toArray(new PlayerEntity[line.size()]);
 	}
-	private ArrayList<PlayerEntity> getTopLane() {
+	public ArrayList<PlayerEntity> getTopLane() {
 		return topLane;
 	}
 	public void setTopLane(ArrayList<PlayerEntity> topLane) {
 		this.topLane = topLane;
 	}
-	private ArrayList<PlayerEntity> getMidLane() {
+	public ArrayList<PlayerEntity> getMidLane() {
 		return midLane;
 	}
 	public void setMidLane(ArrayList<PlayerEntity> midLane) {
 		this.midLane = midLane;
 	}
-	private ArrayList<PlayerEntity> getBottomLane() {
+	public ArrayList<PlayerEntity> getBottomLane() {
 		return BottomLane;
 	}
 	public void setBottomLane(ArrayList<PlayerEntity> bottomLane) {

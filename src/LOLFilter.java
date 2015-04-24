@@ -3,7 +3,26 @@ import java.util.Arrays;
 
 public class LOLFilter {
 	public static void filter(ArrayList<LolTeam> teams) {
-		
+		int i = 0;
+		for (LolTeam team : teams) {
+			if (team.getJungle().size() == 0) {
+				if (team.getBottomLane().size() == 3) {
+					ArrayList<PlayerEntity> possibleJunglers = jungleFilter(team.getBottomLane());
+					if (possibleJunglers.size() == 1) {
+						team.getJungle().add(possibleJunglers.get(0));
+						team.getBottomLane().remove(possibleJunglers.get(0));
+						supportFilter(team.getBottomLane());
+						setNoneToCarry(team.getBottomLane());
+						team.setWeirdCase(false);
+						OrderByPosition.checkWeird(team);
+						if (!team.isWeirdCase()) {
+							i++;
+							System.out.println("Arreglao :D " + i);
+						}
+					}
+				}
+			}
+		}
 	}
 
 	/*
@@ -79,6 +98,14 @@ public class LOLFilter {
 		return result;
 	}
 	
+	public static void setNoneToCarry(ArrayList<PlayerEntity> players) {
+		for(PlayerEntity player : players) {
+			if (player.getRole() == PlayerEntity.NONE) {
+				player.setRole(PlayerEntity.ROLE_CARRY);
+				break;
+			}
+		}
+	}
 	public static ArrayList<PlayerEntity> findSmite(ArrayList<PlayerEntity> players) {
 		ArrayList<PlayerEntity> result = new ArrayList<PlayerEntity>();
 		for (PlayerEntity player : players) {

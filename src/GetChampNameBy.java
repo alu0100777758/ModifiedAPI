@@ -9,7 +9,7 @@ class GetChampNameBy extends HashMap<String, String> {
 	public static String id(String id){
 		if(instance == null)
 			load();
-		return instance.get(id);
+		return instance.get(id) == null? "" + id : instance.get(id);
 	}
 
 	private static void load() {
