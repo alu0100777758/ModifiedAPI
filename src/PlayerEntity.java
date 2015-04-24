@@ -18,6 +18,8 @@ public class PlayerEntity {
 	private int champID;
 	private int playerID;
 	private int role;
+	private int spell1;
+	private int spell2;
 	private ArrayList<Long> items = new ArrayList<Long>();
 	public PlayerEntity(){
 		this(NONE,NONE,NONE);
@@ -50,6 +52,19 @@ public class PlayerEntity {
 	}
 	public void setRole(int role) {
 		this.role = role;
+	}
+	
+	public int getSpell1() {
+		return spell1;
+	}
+	public void setSpell1(int spell1) {
+		this.spell1 = spell1;
+	}
+	public int getSpell2() {
+		return spell2;
+	}
+	public void setSpell2(int spell2) {
+		this.spell2 = spell2;
 	}
 	public void addItem(long itemid){
 		getItems().add(itemid);

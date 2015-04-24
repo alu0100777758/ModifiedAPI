@@ -71,9 +71,7 @@ public class LOLFilter {
 				player.setRole(PlayerEntity.ROLE_SUPPORT);
 				result.add(player);
 			}
-
 		}
-
 		return result;
 	}
 }

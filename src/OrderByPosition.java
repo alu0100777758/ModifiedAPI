@@ -68,6 +68,7 @@ public class OrderByPosition {
 				}
 			}
 			assignItems(match, i, analyzedPlayer);
+			assignSpells(match, i, analyzedPlayer);
 		}
 		if (bottomLane.size() == 2) {
 			if (match.getParticipants().get(secondBottom).getStats().getGoldEarned() > match.getParticipants().get(firstBottom).getStats().getGoldEarned()) {
@@ -111,6 +112,10 @@ public class OrderByPosition {
 		player.addItem(match.getParticipants().get(index).getStats().getItem4());
 		player.addItem(match.getParticipants().get(index).getStats().getItem5());
 		player.addItem(match.getParticipants().get(index).getStats().getItem6());
+	}
+	private static void assignSpells(MatchDetail match, int index, PlayerEntity player) {
+		player.setSpell1(match.getParticipants().get(index).getSpell1Id());
+		player.setSpell2(match.getParticipants().get(index).getSpell2Id());
 	}
 /*	private int findCarry(int team) {
 		int maxdmg = -1;
