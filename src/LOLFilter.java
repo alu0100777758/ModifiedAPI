@@ -30,9 +30,11 @@ public class LOLFilter {
 						(long) 3709, (long) 3710));
 		ArrayList<PlayerEntity> result = new ArrayList<PlayerEntity>();
 		for (PlayerEntity player : players) {
-			if (player.getItems().contains(jungleItemsIDs)) {
-				player.setRole(PlayerEntity.ROLE_JUNGLER);
-				result.add(player);
+			for (int i = 0; i < jungleItemsIDs.size(); i++) {
+				if (player.getItems().contains(jungleItemsIDs.get(i))) {
+					player.setRole(PlayerEntity.ROLE_JUNGLER);
+					result.add(player);
+				}
 			}
 
 		}
@@ -67,8 +69,21 @@ public class LOLFilter {
 		supportItemsIds.add((long) 3092);
 
 		for (PlayerEntity player : players) {
-			if (player.getItems().contains(supportItemsIds)) {
-				player.setRole(PlayerEntity.ROLE_SUPPORT);
+			for (int i = 0; i < supportItemsIds.size(); i++) {
+				if (player.getItems().contains(supportItemsIds.get(i))) {
+					player.setRole(PlayerEntity.ROLE_SUPPORT);
+					result.add(player);
+				}
+			}
+		}
+		return result;
+	}
+	
+	public static ArrayList<PlayerEntity> findSmite(ArrayList<PlayerEntity> players) {
+		ArrayList<PlayerEntity> result = new ArrayList<PlayerEntity>();
+		for (PlayerEntity player : players) {
+			if (player.getSpell1() == 11 || player.getSpell2() == 11) {
+				player.setRole(PlayerEntity.ROLE_JUNGLER);
 				result.add(player);
 			}
 		}
