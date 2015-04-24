@@ -15,10 +15,23 @@ public class toCSV {
         {
             fichero = new FileWriter("teams.csv");
             pw = new PrintWriter(fichero);
-            pw.println("TOP,MID,JUNGLE,BOTTOM");
-            for (int i = 0; i < team.size(); i++)
+            pw.println("TOP,MID,JUNGLE,ADC, SUPPORT");
+            PlayerEntity adc;
+            PlayerEntity supp;
+            
+            for (int i = 0; i < team.size(); i++){
+            	if(team.get(i).getBottomLaneArray()[0].getRole() == team.get(i).getBottomLaneArray()[0].ROLE_CARRY){
+            		adc = team.get(i).getBottomLaneArray()[0];
+            		supp = team.get(i).getBottomLaneArray()[1];
+            	}
+            	else{
+            		adc = team.get(i).getBottomLaneArray()[1];
+            		supp = team.get(i).getBottomLaneArray()[0];
+            	}
+            	
                 pw.println(team.get(i).getTopLaneArray() + "," + team.get(i).getmidLaneArray() + "," + team.get(i).getJungleArray() +
-                		 "," + team.get(i).getBottomLaneArray());
+                		 "," + adc + "," + supp);
+            }
  
         } 
         catch (Exception e) {
