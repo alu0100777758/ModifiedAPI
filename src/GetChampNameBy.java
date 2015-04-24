@@ -123,7 +123,7 @@ class GetChampNameBy extends HashMap<String, String> {
 		instance.put("67", "Vayne");
 		instance.put("45", "Veigar");
 		instance.put("161", "Vel'Koz");
-		instance.put("254", "Vi the text editor");
+		instance.put("254", "Vi");
 		instance.put("112", "Viktor");
 		instance.put("8", "Vladimir");
 		instance.put("106", "Volibear");
@@ -138,6 +138,7 @@ class GetChampNameBy extends HashMap<String, String> {
 		instance.put("115", "Ziggs");
 		instance.put("26", "Zilean");
 		instance.put("143", "Zyra");
+		instance.put("77", "Udyr");
 	}
 
 }

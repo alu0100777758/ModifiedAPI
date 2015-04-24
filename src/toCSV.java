@@ -29,7 +29,7 @@ public class toCSV {
             		supp = team.get(i).getBottomLaneArray()[0];
             	}
             	
-                pw.println(team.get(i).getTopLaneArray() + "," + team.get(i).getmidLaneArray() + "," + team.get(i).getJungleArray() +
+                pw.println(team.get(i).getTopLaneArray()[0] + "," + team.get(i).getmidLaneArray()[0] + "," + team.get(i).getJungleArray()[0] +
                 		 "," + adc + "," + supp);
             }
  

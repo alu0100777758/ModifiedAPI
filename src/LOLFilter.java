@@ -23,6 +23,7 @@ public class LOLFilter {
 				}
 			}
 		}
+
 	}
 
 	/*
@@ -39,7 +40,8 @@ public class LOLFilter {
 	 *            Array de jugadores donde se prevee que est� el jungla.
 	 * @return Jugador que se ha identificado como jungla.
 	 */
-	public static ArrayList<PlayerEntity> jungleFilter(ArrayList<PlayerEntity> players) {
+	public static ArrayList<PlayerEntity> jungleFilter(
+			ArrayList<PlayerEntity> players) {
 		final ArrayList<Long> jungleItemsIDs = new ArrayList<Long>(
 				Arrays.asList((long) 1039, (long) 3711, (long) 3713,
 						(long) 3715, (long) 3706, (long) 3719, (long) 3720,
@@ -74,18 +76,13 @@ public class LOLFilter {
 	 *            Array de jugadores donde se prevee que est� el support.
 	 * @return Jugador que se ha identificado como support.
 	 */
-	public static ArrayList<PlayerEntity> supportFilter(ArrayList<PlayerEntity> players) {
-		ArrayList<Long> supportItemsIds = new ArrayList<Long>();
+	public static ArrayList<PlayerEntity> supportFilter(
+			ArrayList<PlayerEntity> players) {
+		ArrayList<Long> supportItemsIds = new ArrayList<Long>(Arrays.asList(
+				(long) 3301, (long) 3302, (long) 3303, (long) 3069,
+				(long) 3097, (long) 3096, (long) 3098, (long) 3092,
+				(long) 3301, (long) 3401));
 		ArrayList<PlayerEntity> result = new ArrayList<PlayerEntity>();
-		supportItemsIds.add((long) 3301);
-		supportItemsIds.add((long) 3302);
-		supportItemsIds.add((long) 3303);
-		supportItemsIds.add((long) 3069);
-		supportItemsIds.add((long) 3097);
-		supportItemsIds.add((long) 3401);
-		supportItemsIds.add((long) 3096);
-		supportItemsIds.add((long) 3098);
-		supportItemsIds.add((long) 3092);
 
 		for (PlayerEntity player : players) {
 			for (int i = 0; i < supportItemsIds.size(); i++) {
@@ -107,6 +104,7 @@ public class LOLFilter {
 		}
 	}
 	public static ArrayList<PlayerEntity> findSmite(ArrayList<PlayerEntity> players) {
+
 		ArrayList<PlayerEntity> result = new ArrayList<PlayerEntity>();
 		for (PlayerEntity player : players) {
 			if (player.getSpell1() == 11 || player.getSpell2() == 11) {
