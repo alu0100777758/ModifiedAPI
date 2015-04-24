@@ -2,7 +2,7 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry kind="lib" path="/home/sabato/workspace/ModifiedAPI/lib/gson-2.3.1.jar"/>
-	<classpathentry kind="lib" path="/home/sabato/workspace/ModifiedAPI/lib/riot-api-java.jar"/>
+	<classpathentry kind="lib" path="/home/alu4550/datos/homes.rala/ingInformatica/TID/ModifiedAPI/lib/gson-2.3.1.jar"/>
+	<classpathentry kind="lib" path="/home/alu4550/datos/homes.rala/ingInformatica/TID/ModifiedAPI/lib/riot-api-java.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
