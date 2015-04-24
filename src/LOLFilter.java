@@ -14,13 +14,13 @@ public class LOLFilter {
 	 */
 
 	/**
-	 * El método para al encontrar el primer jugador que tenga un objeto jungla.
+	 * El mï¿½todo para al encontrar el primer jugador que tenga un objeto jungla.
 	 * 
 	 * @param players
-	 *            Array de jugadores donde se prevee que esté el jungla.
+	 *            Array de jugadores donde se prevee que estï¿½ el jungla.
 	 * @return Jugador que se ha identificado como jungla.
 	 */
-	public static PlayerEntity jungleFilter(ArrayList<PlayerEntity> players) {
+	public static ArrayList<PlayerEntity> jungleFilter(ArrayList<PlayerEntity> players) {
 		final ArrayList<Long> jungleItemsIDs = new ArrayList<Long>(
 				Arrays.asList((long) 1039, (long) 3711, (long) 3713,
 						(long) 3715, (long) 3706, (long) 3719, (long) 3720,
@@ -28,36 +28,15 @@ public class LOLFilter {
 						(long) 3725, (long) 3726, (long) 3714, (long) 3716,
 						(long) 3717, (long) 3718, (long) 3707, (long) 3708,
 						(long) 3709, (long) 3710));
-		// jungleItemsIDs.add((long)1039);
-		// jungleItemsIDs.add((long) 3711);
-		// jungleItemsIDs.add((long)3713);
-		// jungleItemsIDs.add((long) 3715);
-		// jungleItemsIDs.add((long)3706);
-		// jungleItemsIDs.add((long)3719);
-		// jungleItemsIDs.add((long)3720);
-		// jungleItemsIDs.add((long)3721);
-		// jungleItemsIDs.add((long)3722);
-		// jungleItemsIDs.add((long)3723);
-		// jungleItemsIDs.add((long)3724);
-		// jungleItemsIDs.add((long)3725);
-		// jungleItemsIDs.add((long)3726);
-		// jungleItemsIDs.add((long)3714);
-		// jungleItemsIDs.add((long)3716);
-		// jungleItemsIDs.add((long)3717);
-		// jungleItemsIDs.add((long)3718);
-		// jungleItemsIDs.add((long)3707);
-		// jungleItemsIDs.add((long)3708);
-		// jungleItemsIDs.add((long)3709);
-		// jungleItemsIDs.add((long)3710);
+		ArrayList<PlayerEntity> result = new ArrayList<PlayerEntity>();
 		for (PlayerEntity player : players) {
 			if (player.getItems().contains(jungleItemsIDs)) {
 				player.setRole(PlayerEntity.ROLE_JUNGLER);
-				return player;
+				result.add(player);
 			}
 
 		}
-
-		return null;
+		return result;
 	}
 
 	/*
@@ -67,15 +46,16 @@ public class LOLFilter {
 	 */
 
 	/**
-	 * El método para al encontrar el primer jugador que tenga un objeto
+	 * El mï¿½todo para al encontrar el primer jugador que tenga un objeto
 	 * support.
 	 * 
 	 * @param players
-	 *            Array de jugadores donde se prevee que esté el support.
+	 *            Array de jugadores donde se prevee que estï¿½ el support.
 	 * @return Jugador que se ha identificado como support.
 	 */
-	public static PlayerEntity supportFilter(ArrayList<PlayerEntity> players) {
+	public static ArrayList<PlayerEntity> supportFilter(ArrayList<PlayerEntity> players) {
 		ArrayList<Long> supportItemsIds = new ArrayList<Long>();
+		ArrayList<PlayerEntity> result = new ArrayList<PlayerEntity>();
 		supportItemsIds.add((long) 3301);
 		supportItemsIds.add((long) 3302);
 		supportItemsIds.add((long) 3303);
@@ -89,11 +69,11 @@ public class LOLFilter {
 		for (PlayerEntity player : players) {
 			if (player.getItems().contains(supportItemsIds)) {
 				player.setRole(PlayerEntity.ROLE_SUPPORT);
-				return player;
+				result.add(player);
 			}
 
 		}
 
-		return null;
+		return result;
 	}
 }
