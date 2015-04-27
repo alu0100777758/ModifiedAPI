@@ -12,12 +12,40 @@ public class LOLFilter {
 						team.getJungle().add(possibleJunglers.get(0));
 						team.getBottomLane().remove(possibleJunglers.get(0));
 						supportFilter(team.getBottomLane());
-						setNoneToCarry(team.getBottomLane());
+						setNoneTo(team.getBottomLane(), PlayerEntity.ROLE_CARRY);
 						team.setWeirdCase(false);
 						OrderByPosition.checkWeird(team);
 						if (!team.isWeirdCase()) {
 							i++;
 							System.out.println("Arreglao :D " + i);
+						}
+					}
+				}
+				if (team.getTopLane().size() == 2) {
+					ArrayList<PlayerEntity> possibleJunglers = jungleFilter(team.getTopLane());
+					if (possibleJunglers.size() == 1) {
+						team.getJungle().add(possibleJunglers.get(0));
+						team.getTopLane().remove(possibleJunglers.get(0));
+						setNoneTo(team.getTopLane(), PlayerEntity.ROLE_TOP);
+						team.setWeirdCase(false);
+						OrderByPosition.checkWeird(team);
+						if (!team.isWeirdCase()) {
+							i++;
+							System.out.println("Arreglao" + i);
+						}
+					}
+				}
+				if (team.getMidLane().size() == 2) {
+					ArrayList<PlayerEntity> possibleJunglers = jungleFilter(team.getMidLane());
+					if (possibleJunglers.size() == 1) {
+						team.getJungle().add(possibleJunglers.get(0));
+						team.getMidLane().remove(possibleJunglers.get(0));
+						setNoneTo(team.getMidLane(), PlayerEntity.ROLE_MID);
+						team.setWeirdCase(false);
+						OrderByPosition.checkWeird(team);
+						if (!team.isWeirdCase()) {
+							i++;
+							System.out.println("Arreglao :D!! " + i);
 						}
 					}
 				}
@@ -95,10 +123,10 @@ public class LOLFilter {
 		return result;
 	}
 	
-	public static void setNoneToCarry(ArrayList<PlayerEntity> players) {
+	public static void setNoneTo(ArrayList<PlayerEntity> players, int role) {
 		for(PlayerEntity player : players) {
 			if (player.getRole() == PlayerEntity.NONE) {
-				player.setRole(PlayerEntity.ROLE_CARRY);
+				player.setRole(role);
 				break;
 			}
 		}
