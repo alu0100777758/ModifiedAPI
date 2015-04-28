@@ -8,9 +8,16 @@ public class LolTeam implements Serializable{
 	private ArrayList<PlayerEntity> midLane = new ArrayList<PlayerEntity>();
 	private ArrayList<PlayerEntity> BottomLane = new ArrayList<PlayerEntity>();
 	private ArrayList<PlayerEntity> Jungle = new ArrayList<PlayerEntity>();
+	private boolean winner;
 	private boolean weirdCase = false;
 	private TeamData data;
 	
+	public boolean isWinner() {
+		return winner;
+	}
+	public void setWinner(boolean winner) {
+		this.winner = winner;
+	}
 	public PlayerEntity[] getTopLaneArray(){
 		return LaneToArray(getTopLane());
 	}

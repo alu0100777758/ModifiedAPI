@@ -13,7 +13,7 @@ public class toCSV {
         PrintWriter pw = null;
         try
         {
-            fichero = new FileWriter("Badteams.csv");
+            fichero = new FileWriter("CorrectTeams.csv");
             pw = new PrintWriter(fichero);
             pw.println("TOP,MID,JUNGLE,ADC, SUPPORT");
             PlayerEntity adc;
@@ -30,7 +30,7 @@ public class toCSV {
             	}
             	
                 pw.println(team.get(i).getTopLaneArray()[0] + "," + team.get(i).getmidLaneArray()[0] + "," + team.get(i).getJungleArray()[0] +
-                		 "," + adc + "," + supp);
+                		 "," + adc + "," + supp + ", " + team.get(i).isWinner());
             }
  
         } 

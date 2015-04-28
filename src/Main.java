@@ -48,7 +48,7 @@ public class Main {
 			}
 		}
 		
-		csvConverter.teamToCsv(badTeams);
+		csvConverter.teamToCsv(teams);
 	}
 	
 	static MatchDetail loadFromFile(String fileidname)throws IOException, RiotApiException, FileNotFoundException,ClassNotFoundException{

@@ -36,8 +36,9 @@ public class OrderByPosition {
 		ArrayList<PlayerEntity> jungle = new ArrayList<PlayerEntity>();
 				
 		if (teamColor == RED_TEAM) teamIndex = 5;
-	
+		team.setWinner(match.getTeams().get(teamColor).isWinner());
 		for (int i = 0 + teamIndex; i < 5 + teamIndex; i++) {
+			
 			analyzedPlayer = null;
 			if (match.getParticipants().get(i).getTimeline().getLane().equals("TOP")) {	
 				analyzedPlayer = new PlayerEntity(match.getParticipants().get(i).getParticipantId(), match.getParticipants().get(i).getChampionId(), PlayerEntity.ROLE_TOP);
@@ -87,7 +88,7 @@ public class OrderByPosition {
 		team.setTopLane(topLane);
 		
 		checkWeird(team);
-	
+		
 		return team;
 	}
 	
