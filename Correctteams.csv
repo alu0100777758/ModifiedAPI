@@ -1,4 +1,4 @@
-TOP,MID,JUNGLE,ADC, SUPPORT
+TOP,MID,JUNGLE,ADC, SUPPORT, IsWinner
 Lissandra,Orianna,Vi,Varus,Morgana, true
 Nasus,Vel'Koz,Lee Sin,Ezreal,Leona, false
 Vladimir,Irelia,Shaco,Sivir,Sona, true
