@@ -37,11 +37,18 @@ public class Main {
 				badTeams.add(team);
 		}
 
-		//toCSV csvConverter = new toCSV();
+		toCSV csvConverter = new toCSV();
 		
-		//csvConverter.teamToCsv(teams);
+		
 		LOLFilter.filter(badTeams);
+		for (int i = 0; i < badTeams.size(); i++) {
+			if (!badTeams.get(i).isWeirdCase()) {
+				teams.add(badTeams.get(i));
+				badTeams.remove(i);
+			}
+		}
 		
+		csvConverter.teamToCsv(badTeams);
 	}
 	
 	static MatchDetail loadFromFile(String fileidname)throws IOException, RiotApiException, FileNotFoundException,ClassNotFoundException{
