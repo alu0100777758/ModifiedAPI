@@ -13,7 +13,7 @@ public class toCSV {
         PrintWriter pw = null;
         try
         {
-            fichero = new FileWriter("CorrectTeams.csv");
+            fichero = new FileWriter("Pairs.csv");
             pw = new PrintWriter(fichero);
             pw.println("TOP,MID,JUNGLE,ADC, SUPPORT, IsWinner");
             PlayerEntity adc;

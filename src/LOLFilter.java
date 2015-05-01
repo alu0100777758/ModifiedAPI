@@ -17,7 +17,7 @@ public class LOLFilter {
 						OrderByPosition.checkWeird(team);
 						if (!team.isWeirdCase()) {
 							i++;
-							System.out.println("Arreglao :D " + i);
+							//System.out.println("Arreglao :D " + i);
 						}
 					}
 				}
@@ -31,7 +31,7 @@ public class LOLFilter {
 						OrderByPosition.checkWeird(team);
 						if (!team.isWeirdCase()) {
 							i++;
-							System.out.println("Arreglao" + i);
+							//System.out.println("Arreglao" + i);
 						}
 					}
 				}
@@ -45,7 +45,7 @@ public class LOLFilter {
 						OrderByPosition.checkWeird(team);
 						if (!team.isWeirdCase()) {
 							i++;
-							System.out.println("Arreglao :D!! " + i);
+							//System.out.println("Arreglao :D!! " + i);
 						}
 					}
 				}

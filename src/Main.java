@@ -49,6 +49,13 @@ public class Main {
 		}
 		
 		csvConverter.teamToCsv(teams);
+		int count = 0;
+		for (int i = 0; i< badTeams.size(); i++) {
+			System.out.println("Top: " + badTeams.get(i).getTopLane() + ", Mid: " +  badTeams.get(i).getMidLane() + ", Bot: " + badTeams.get(i).getBottomLane()+", Jungle: " + badTeams.get(i).getJungle() + " " + badTeams.get(i).isWinner());
+			if (badTeams.get(i).isWinner())
+				count++;
+		}
+		System.out.println(count);
 	}
 	
 	static MatchDetail loadFromFile(String fileidname)throws IOException, RiotApiException, FileNotFoundException,ClassNotFoundException{
